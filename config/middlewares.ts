@@ -8,26 +8,19 @@ const config: Core.Config.Middlewares = [
     name: 'strapi::cors',
     config: {
       origin: [
-        // local dev
         'http://localhost:3000',
         'http://localhost:5173',
-
-        // vercel preview
-        /\.vercel\.app$/,
-
-        // future production domains
+        'https://website-git-main-dans-projects-6c598081.vercel.app',
         'https://agraris.ru',
         'https://www.agraris.ru',
-
         'https://agraris.tech',
         'https://www.agraris.tech',
-
         'https://agraristech.by',
         'https://www.agraristech.by',
       ],
-      methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+      methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
       headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
-      credentials: true,
+      keepHeaderOnError: true,
     },
   },
   'strapi::poweredBy',
