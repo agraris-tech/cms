@@ -1,0 +1,157 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "text"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "description": {
+      "type": "text"
+    },
+    "shortDescription": {
+      "type": "text"
+    },
+    "priceBase": {
+      "type": "decimal"
+    },
+    "baseCurrency": {
+      "type": "enumeration",
+      "enum": [
+        "EUR",
+        "USD",
+        "BYN",
+        "RUB",
+        "KZT"
+      ]
+    },
+    "availability": {
+      "type": "enumeration",
+      "enum": [
+        "in_stock",
+        "on_request",
+        "out_of_stock"
+      ]
+    },
+    "year": {
+      "type": "integer"
+    },
+    "country": {
+      "type": "string"
+    },
+    "featured": {
+      "type": "boolean"
+    },
+    "isActive": {
+      "type": "boolean"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "specs": {
+      "type": "json"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "products"
+    },
+    "brand": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::brand.brand"
+    },
+    "power": {
+      "type": "string"
+    },
+    "conditionLabel": {
+      "type": "string"
+    },
+    "mainImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "sku": {
+      "type": "string"
+    },
+    "sourceUrl": {
+      "type": "string"
+    },
+    "searchKeywords": {
+      "type": "text"
+    },
+    "unit": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "integer"
+    },
+    "metaTitle": {
+      "type": "string"
+    },
+    "metaDescription": {
+      "type": "text"
+    },
+    "supplierName": {
+      "type": "string"
+    },
+    "supplierAddress": {
+      "type": "string"
+    },
+    "manufacturerAddress": {
+      "type": "string"
+    },
+    "wholesaleMinOrder": {
+      "type": "integer"
+    },
+    "wholesalePrice": {
+      "type": "decimal"
+    },
+    "priceFrom": {
+      "type": "integer"
+    },
+    "saleType": {
+      "type": "enumeration",
+      "enum": [
+        "retail",
+        "wholesale",
+        "both"
+      ]
+    },
+    "manufacturer": {
+      "type": "string"
+    },
+    "warranty": {
+      "type": "string"
+    },
+    "deliveryTime": {
+      "type": "string"
+    }
+  }
+}

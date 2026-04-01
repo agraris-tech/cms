@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "equipment_cards",
+  "info": {
+    "singularName": "equipment-card",
+    "pluralName": "equipment-cards",
+    "displayName": "Equipment Card"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "badge": {
+      "type": "text"
+    },
+    "iconKey": {
+      "type": "string"
+    },
+    "items": {
+      "type": "json"
+    },
+    "sortOrder": {
+      "type": "integer"
+    },
+    "isActive": {
+      "type": "boolean"
+    }
+  }
+}

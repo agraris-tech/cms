@@ -1,0 +1,90 @@
+{
+  "kind": "collectionType",
+  "collectionName": "site_settings",
+  "info": {
+    "singularName": "site-setting",
+    "pluralName": "site-settings",
+    "displayName": "Site Setting"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "companyName": {
+      "type": "string"
+    },
+    "companySubtitle": {
+      "type": "string"
+    },
+    "legalName": {
+      "type": "string"
+    },
+    "companyShortDescription": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "whatsappUrl": {
+      "type": "string"
+    },
+    "workHours": {
+      "type": "string"
+    },
+    "addressShort": {
+      "type": "string"
+    },
+    "callbackButtonText": {
+      "type": "string"
+    },
+    "privacyPolicyUrl": {
+      "type": "string"
+    },
+    "termsUrl": {
+      "type": "string"
+    },
+    "telegramUrl": {
+      "type": "string"
+    },
+    "contactPageTitle": {
+      "type": "string"
+    },
+    "contactPageSubtitle": {
+      "type": "text"
+    },
+    "contactBadgeText": {
+      "type": "string"
+    },
+    "fullAddress": {
+      "type": "text"
+    },
+    "websiteUrl": {
+      "type": "string"
+    },
+    "contactPerson": {
+      "type": "string"
+    },
+    "officeCity": {
+      "type": "string"
+    },
+    "officeRegionLabel": {
+      "type": "string"
+    },
+    "mapTitle": {
+      "type": "string"
+    },
+    "mapSubtitle": {
+      "type": "string"
+    },
+    "mapEmbedUrl": {
+      "type": "text"
+    },
+    "mapAddressLabel": {
+      "type": "string"
+    }
+  }
+}
