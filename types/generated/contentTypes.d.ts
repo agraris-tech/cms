@@ -687,20 +687,16 @@ export interface ApiSiteSettingSiteSetting extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    addressShort: Schema.Attribute.String;
-    callbackButtonText: Schema.Attribute.String;
     companyName: Schema.Attribute.String;
     companyShortDescription: Schema.Attribute.String;
     companySubtitle: Schema.Attribute.String;
-    contactBadgeText: Schema.Attribute.String;
-    contactPageSubtitle: Schema.Attribute.Text;
-    contactPageTitle: Schema.Attribute.String;
+    contactBy: Schema.Attribute.Component<'shared.regional-contact', false>;
+    contactKz: Schema.Attribute.Component<'shared.regional-contact', false>;
     contactPerson: Schema.Attribute.String;
+    contactRu: Schema.Attribute.Component<'shared.regional-contact', false>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    email: Schema.Attribute.Email;
-    fullAddress: Schema.Attribute.Text;
     legalName: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -708,23 +704,13 @@ export interface ApiSiteSettingSiteSetting extends Struct.CollectionTypeSchema {
       'api::site-setting.site-setting'
     > &
       Schema.Attribute.Private;
-    mapAddressLabel: Schema.Attribute.String;
-    mapEmbedUrl: Schema.Attribute.Text;
-    mapSubtitle: Schema.Attribute.String;
-    mapTitle: Schema.Attribute.String;
-    officeCity: Schema.Attribute.String;
-    officeRegionLabel: Schema.Attribute.String;
-    phone: Schema.Attribute.String;
     privacyPolicyUrl: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    telegramUrl: Schema.Attribute.String;
     termsUrl: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     websiteUrl: Schema.Attribute.String;
-    whatsappUrl: Schema.Attribute.String;
-    workHours: Schema.Attribute.String;
   };
 }
 

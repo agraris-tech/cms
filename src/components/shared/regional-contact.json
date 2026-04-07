@@ -1,0 +1,48 @@
+{
+  "collectionName": "components_shared_regional_contacts",
+  "info": {
+    "displayName": "Regional Contact",
+    "icon": "collapse"
+  },
+  "options": {},
+  "attributes": {
+    "phone": {
+      "type": "string"
+    },
+    "whatsappUrl": {
+      "type": "string"
+    },
+    "telegramUrl": {
+      "type": "string"
+    },
+    "addressShort": {
+      "type": "string"
+    },
+    "fullAddress": {
+      "type": "string"
+    },
+    "mapType": {
+      "type": "enumeration",
+      "enum": [
+        "google",
+        "yandex"
+      ]
+    },
+    "mapEmbedUrl": {
+      "type": "text"
+    },
+    "mapExternalUrl": {
+      "type": "string"
+    },
+    "workingHours": {
+      "type": "string"
+    },
+    "callbackButtonText": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
