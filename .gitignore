@@ -129,3 +129,9 @@ dist
 build
 .strapi-updater.json
 .strapi-cloud.json
+
+.env
+node_modules/
+build/
+.tmp/
+public/uploads/

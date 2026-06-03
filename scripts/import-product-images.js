@@ -1,8 +1,8 @@
 const xlsx = require('xlsx');
 
 const STRAPI_URL = process.env.STRAPI_URL || 'http://localhost:1337';
-const STRAPI_API_TOKEN = process.env.STRAPI_API_TOKEN || '42b9b1907f1687cad3cfd7d05e679e38a961d3c1be58e6960d6d8e887cd739032d2302d3b58e1797c3ae8ccbdef8c39b74a87ccf57f5498e1f5a49635f01701e3e2a5ea8f2a3af096cabd443e2aff7ca4b694a24ec17cf98614f6449163247723820c13ef12b5defd6b33f87b3a07c7dca4ead7bfb5e112218fa797698af1ba7';
-const FILE_PATH = '/Users/greck/Desktop/agraris/agraris-cms/scripts/export-products-29-03-26_02-25-56.xlsx';
+const STRAPI_API_TOKEN = process.env.STRAPI_API_TOKEN || '2c47d8f2c579d9c64e5e7c4a66a7eacb75b34f870ea9353452eab5b4dd124254b0ea033c363fb53f7eff77a09c28a895d600ef0abfb679bd3ff352eb85d0f21a65f803c10b662c13d0b8e9d45e1f7695f545f7436f6174d9879f54573d37545583fa0387f53640acd6d88f661fcef8b4c3c7426e3376a65519dad95fc3c9aad5';
+const FILE_PATH = '/Users/greck/Desktop/AgrarisFinal/cms/scripts/export-products-29-03-26_02-25-56.xlsx';
 
 function normalizeText(value) {
     return String(value || '').trim();
@@ -194,38 +194,50 @@ async function main() {
             continue;
         }
 
-        // Если mainImage уже есть — пропускаем
-        if (product.mainImage && product.images && product.images.length > 0) {
-            console.log(`↪ Already has gallery: ${title}`);
-            skipped++;
-            continue;
-        }
-
         try {
-
+            // Берем первую ссылку для главного фото
+            const mainImageUrl = imageUrls[0];
+            // Остальные берем для галереи
             const galleryUrls = imageUrls.slice(1);
-            const uploadedFiles = [];
 
+            const payload = {};
+
+            // 1. Загружаем главную картинку (mainImage)
+            if (mainImageUrl) {
+                const mainImageFileName = getFileNameFromUrl(mainImageUrl, `${product.slug || 'product'}-main.jpg`);
+                const mainImageFile = await uploadImageFromUrl(mainImageUrl, mainImageFileName);
+                if (mainImageFile) {
+                    payload.mainImage = mainImageFile.id;
+                }
+            }
+
+            // 2. Загружаем галерею (images)
+            const uploadedGalleryFiles = [];
             for (let i = 0; i < galleryUrls.length; i++) {
                 const imageUrl = galleryUrls[i];
-                const fileName = getFileNameFromUrl(imageUrl, `${product.slug}-gallery-${i + 1}.jpg`);
+                const fileName = getFileNameFromUrl(imageUrl, `${product.slug || 'product'}-gallery-${i + 1}.jpg`);
 
                 const uploadedFile = await uploadImageFromUrl(imageUrl, fileName);
 
                 if (uploadedFile) {
-                    uploadedFiles.push(uploadedFile);
+                    uploadedGalleryFiles.push(uploadedFile);
                 }
             }
 
-            if (!uploadedFiles.length) {
-                console.log(`↪ No extra gallery images: ${title}`);
+            if (uploadedGalleryFiles.length > 0) {
+                payload.images = uploadedGalleryFiles.map((file) => file.id);
+            }
+
+            // Если ничего не загрузилось, пропускаем
+            if (Object.keys(payload).length === 0) {
+                console.log(`↪ No images to update: ${title}`);
                 skipped++;
                 continue;
             }
 
-            await updateProduct(product.documentId, {
-                images: uploadedFiles.map((file) => file.id),
-            });
+            // Обновляем продукт в Strapi сразу двумя полями
+            await updateProduct(product.documentId, payload);
+            console.log(`✅ Updated images for: ${title}`);
             updated++;
         } catch (error) {
             console.error(`❌ Failed image import: ${title}`);

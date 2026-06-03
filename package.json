@@ -1,5 +1,5 @@
 {
-  "name": "agraris-cms",
+  "name": "cms",
   "version": "0.1.0",
   "private": true,
   "description": "A Strapi application",
@@ -15,14 +15,13 @@
     "upgrade:dry": "npx @strapi/upgrade latest --dry"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "5.40.0",
-    "@strapi/plugin-users-permissions": "5.40.0",
-    "@strapi/strapi": "5.40.0",
-    "pg": "8.8.0",
+    "@strapi/plugin-cloud": "5.47.0",
+    "@strapi/plugin-users-permissions": "5.47.0",
+    "@strapi/strapi": "5.47.0",
+    "better-sqlite3": "12.8.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
-    "slugify": "^1.6.8",
     "styled-components": "^6.0.0",
     "xlsx": "^0.18.5"
   },
@@ -33,11 +32,11 @@
     "typescript": "^5"
   },
   "engines": {
-    "node": ">=20.0.0 <=23",
+    "node": ">=20.0.0 <=24.x.x",
     "npm": ">=6.0.0"
   },
   "strapi": {
-    "uuid": "67abf040-1166-4f5c-8476-dbade6c2b23d",
-    "installId": "649774f5ee9dc9403f69ed813c0ba74c709b6df057a932d2c5bf6d759c5cdcb2"
+    "uuid": "751f22dc-a543-4dc2-a276-848e42e67f6f",
+    "installId": "18358ff0eb49cee534e62c751ac768d7480543bb2a7b7c260d0ad9adaec5eb65"
   }
 }
