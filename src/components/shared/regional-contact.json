@@ -32,7 +32,7 @@
       "type": "text"
     },
     "mapExternalUrl": {
-      "type": "string"
+      "type": "text"
     },
     "workingHours": {
       "type": "string"
