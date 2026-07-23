@@ -617,6 +617,49 @@ export interface ApiEquipmentCardEquipmentCard
   };
 }
 
+export interface ApiNewsArticleNewsArticle extends Struct.CollectionTypeSchema {
+  collectionName: 'news_articles';
+  info: {
+    displayName: 'News Article';
+    pluralName: 'news-articles';
+    singularName: 'news-article';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    authorName: Schema.Attribute.String & Schema.Attribute.DefaultTo<'AGRARIS'>;
+    category: Schema.Attribute.Enumeration<
+      ['company_news', 'equipment_reviews', 'technologies', 'events', 'tips']
+    >;
+    content: Schema.Attribute.Blocks;
+    cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    excerpt: Schema.Attribute.Text;
+    featured: Schema.Attribute.Boolean;
+    featuredOrder: Schema.Attribute.Integer;
+    isActive: Schema.Attribute.Boolean;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::news-article.news-article'
+    > &
+      Schema.Attribute.Private;
+    metaDescription: Schema.Attribute.Text;
+    metaTitle: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    publishedDate: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    searchKeywords: Schema.Attribute.Text;
+    slug: Schema.Attribute.UID<'title'>;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiProductProduct extends Struct.CollectionTypeSchema {
   collectionName: 'products';
   info: {
@@ -1240,6 +1283,7 @@ declare module '@strapi/strapi' {
       'api::category.category': ApiCategoryCategory;
       'api::currency-rate.currency-rate': ApiCurrencyRateCurrencyRate;
       'api::equipment-card.equipment-card': ApiEquipmentCardEquipmentCard;
+      'api::news-article.news-article': ApiNewsArticleNewsArticle;
       'api::product.product': ApiProductProduct;
       'api::site-setting.site-setting': ApiSiteSettingSiteSetting;
       'plugin::content-releases.release': PluginContentReleasesRelease;

@@ -12,7 +12,7 @@ export interface SharedRegionalContact extends Struct.ComponentSchema {
     email: Schema.Attribute.String;
     fullAddress: Schema.Attribute.String;
     mapEmbedUrl: Schema.Attribute.Text;
-    mapExternalUrl: Schema.Attribute.String;
+    mapExternalUrl: Schema.Attribute.Text;
     mapType: Schema.Attribute.Enumeration<['google', 'yandex']>;
     phone: Schema.Attribute.String;
     telegramUrl: Schema.Attribute.String;
