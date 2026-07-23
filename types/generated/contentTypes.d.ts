@@ -632,7 +632,7 @@ export interface ApiNewsArticleNewsArticle extends Struct.CollectionTypeSchema {
     category: Schema.Attribute.Enumeration<
       ['company_news', 'equipment_reviews', 'technologies', 'events', 'tips']
     >;
-    content: Schema.Attribute.Blocks;
+    content: Schema.Attribute.RichText;
     cover: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

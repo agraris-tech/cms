@@ -21,9 +21,6 @@
     "excerpt": {
       "type": "text"
     },
-    "content": {
-      "type": "blocks"
-    },
     "cover": {
       "type": "media",
       "multiple": false,
@@ -69,6 +66,9 @@
     },
     "searchKeywords": {
       "type": "text"
+    },
+    "content": {
+      "type": "richtext"
     }
   }
 }
