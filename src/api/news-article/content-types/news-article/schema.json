@@ -1,0 +1,74 @@
+{
+  "kind": "collectionType",
+  "collectionName": "news_articles",
+  "info": {
+    "singularName": "news-article",
+    "pluralName": "news-articles",
+    "displayName": "News Article"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "excerpt": {
+      "type": "text"
+    },
+    "content": {
+      "type": "blocks"
+    },
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "company_news",
+        "equipment_reviews",
+        "technologies",
+        "events",
+        "tips"
+      ]
+    },
+    "featured": {
+      "type": "boolean"
+    },
+    "featuredOrder": {
+      "type": "integer"
+    },
+    "isActive": {
+      "type": "boolean"
+    },
+    "publishedDate": {
+      "type": "datetime",
+      "required": true
+    },
+    "authorName": {
+      "type": "string",
+      "default": "AGRARIS"
+    },
+    "metaTitle": {
+      "type": "string"
+    },
+    "metaDescription": {
+      "type": "text"
+    },
+    "searchKeywords": {
+      "type": "text"
+    }
+  }
+}
